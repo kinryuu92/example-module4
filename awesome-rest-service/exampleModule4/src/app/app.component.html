@@ -1,0 +1,75 @@
+<div class="container" [style.margin-top.px]="50">
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tag</th>
+            <th>url</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let awesome of awesomes">
+            <td>{{ awesome.id }}</td>
+            <td>{{ awesome.tag }}</td>
+            <td>{{ awesome.url }}</td>
+            <td>{{ awesome.descriptions }}</td>
+            <td>
+              <button type="button" class="btn btn-primary" (click)="onEditAwesome(awesome)">Edit</button>
+              <button type="button" class="btn btn-danger" (click)="onDeleteAwesome(awesome)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr>
+
+      <div class="form-row">
+        <form class="col-md-6">
+          <legend>Add awesome</legend>
+          <div class="form-group">
+            <label>Tag</label>
+            <input type="text" class="form-control" placeholder="input tag" [(ngModel)]="tag"
+              [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="form-group">
+            <label>Url</label>
+            <input type="text" class="form-control" placeholder="input Url" [(ngModel)]="url"
+              [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="form-group">
+            <label>Descriptions</label>
+            <input type="text" class="form-control" placeholder="input descriptions" [(ngModel)]="descriptions"
+              [ngModelOptions]="{standalone: true}">
+          </div>
+
+          <button type="button" class="btn btn-success" (click)="onAddAwesome()">Save</button>
+        </form>
+
+        <form class="col-md-6" *ngIf="awesome">
+          <legend>Edit awesome</legend>
+          <div class="form-group">
+            <label>Tag</label>
+            <input type="text" class="form-control" placeholder="input tag" [(ngModel)]="awesome.tag"
+              [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="form-group">
+            <label>Url</label>
+            <input type="text" class="form-control" placeholder="input url" [(ngModel)]="awesome.url"
+              [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="form-group">
+            <label>Desciptions</label>
+            <input type="text" class="form-control" placeholder="input descriptions" [(ngModel)]="awesome.descriptions"
+              [ngModelOptions]="{standalone: true}">
+          </div>
+
+          <button type="button" class="btn btn-success" (click)="onUpdateAwesome()">Save</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
